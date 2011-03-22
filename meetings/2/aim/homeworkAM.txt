@@ -1,0 +1,11 @@
+var multiply=function(num,calc)
+{
+   return{
+   get_status:function(){
+       return (num*calc);
+   }
+   };
+};
+var answer=multiply(3,4);
+console.log(answer.get_status());
+answer;
