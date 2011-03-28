@@ -15,7 +15,7 @@ function traverse(objs, fun) {
         if(objs.hasOwnProperty(obj)) {
             if(typeof objs[obj] === 'object' || typeof objs[obj] === 'array'){
                 traverse(objs[obj], fun);
-            } else if (typeof objs[obj] === 'string') {
+            } else if (typeof objs[obj] === 'string' || typeof objs[obj] === 'number') {
                 fun(objs[obj]);
             }
        }
