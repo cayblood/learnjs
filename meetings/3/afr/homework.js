@@ -5,7 +5,34 @@
     }
 })();
 
-function test(x){
+// Ex 1
+function log(txt){
+    if (window.console) {
+        console.log(txt);
+    }
+    else 
+        if (window.aptana) {
+            aptana.log(txt);
+        }
+        else {
+            alert(txt);
+        }
+}
+
+function ex1(){
+    var x = 3;
+    try {
+        throw 5;
+    } 
+    catch (x) {
+    }
+    log("x = " + x);
+}
+
+ex1();
+
+
+function ex1_1(x){
     var y = "Y";
     var z = "Z";
     try {
@@ -14,18 +41,44 @@ function test(x){
         throw z;
     } 
     catch (x) {
-        alert(x); // added to clearify
-        alert(y);
-        alert(z);
+        log("x = " + x); // added to clearify
+        log("y = " + y);
+        log("z = " + z);
     }
-    alert(x);
+    log("x = " + x);
 }
 
-test();
+ex1_1();
 
-if (jQuery) {
-    alert("jquery");
-	if(window.console) {
-		console.log("KOKO");
-	}
+//Ex 2
+var hello = "Hello World";
+function ex2(){
+    setTimeout(alert, 1000, hello); // Wrong usage, last param should be :lang 	Optional. JScript | VBScript | JavaScript 
 }
+
+ex2();
+
+function ex2_1(){
+    setTimeout(function(){
+        alert(hello);
+    }, 1000);
+}
+
+ex2_1();
+
+// Ex 4
+window['anders'] = function(){return "Always younger than Helge";};
+function getAgeInYears(){
+    return {
+        helge: 28,
+        anders: 56
+    };
+}
+
+log(getAgeInYears().anders);
+
+log(window['56']());
+
+
+
+
