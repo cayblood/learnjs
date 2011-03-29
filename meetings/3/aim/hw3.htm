@@ -1,0 +1,34 @@
+<html>
+<script type="text/javascript"></script>
+<body>
+
+<script type="text/javascript">
+var myObject = {
+ 'name' : 'anders',
+ 'age' : 56,
+ 'languages' : ['norwegian', 'sami'],
+ 'contactMethods' : {
+   'pstn' : '1111',
+   'isdn' : '2222',
+   'fax' : '3333'
+ }
+};
+
+function process(key,value) {
+   console.log(key + " : "+value);
+}
+
+function traverse(o,func) {
+   for (i in o) {
+       func.apply(this,[i,o[i]]);
+       if (typeof(o[i])=="object") {
+               traverse(o[i],func);
+       }
+}
+}
+
+traverse(myObject,process);
+</script>
+
+</body>
+</html>
