@@ -27,7 +27,10 @@ function Person(){
 	return name;
 }
 
-var afr = new Person();
+var afr = Person();
 afr.setName("AFR");
+var afr1 = new Person();
+afr1.setName("AFR1");
 
 aptana.log(afr.speak());
+aptana.log(afr1.speak());
