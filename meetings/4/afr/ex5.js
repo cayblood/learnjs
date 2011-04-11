@@ -21,7 +21,7 @@ var extend = function(base, fn){
     return fn;
 };
 
-var Hacker = extend(Person, function(){
+var Hacker = extend(Person, function() {
 	this.speak = function() {
 		return "Hi I'm " + this.name + " the hacker";
 	};
@@ -31,8 +31,6 @@ var Hacker = extend(Person, function(){
 var afr = new Hacker().setName('AFR');
 
 aptana.log(afr.speak());
-
-//
 
 function extender(base,sub) {
 	sub.prototype = new Base();
