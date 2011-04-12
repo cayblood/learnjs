@@ -1,14 +1,16 @@
-var empty = [];
-
-empty[0] = 1;
-empty[1] = 2;
-empty[2] = 3;
-
-var numbers = [
-  'zero', 'one', 'two', 'three', 'four',
+var mixArr = [
+  'zero', true, { arne: 23, test: 33}, [1, 2, 3]
 ];
 
-console.log(empty.length);
-console.log(numbers.length);
-console.log(empty);
-console.log(numbers);
+var traverseArr = function(arr, fun) {
+    for(var i = 0; i < arr.length; i++) {
+        var obj = arr[i]
+        if(typeof obj === 'object' || typeof obj === 'array'){
+            traverseArr(obj, fun);
+        } else {
+            fun(obj);
+        }
+     }
+};
+
+console.log(traverseArr(mixArr, console.log));
