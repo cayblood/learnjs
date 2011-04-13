@@ -16,4 +16,3 @@ var addAge = function(oldy1, oldy2) {
 var totalAge = oldFolks.reduce(addAge);
 console.log("The folks has a total age of: " + totalAge);
 
-
