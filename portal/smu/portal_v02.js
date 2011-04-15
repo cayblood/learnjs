@@ -14,15 +14,15 @@ var page = function(def) {
     each(this.widgets, function(widget) {
       widget.render('page_' + def.id);
     });
-  };
+  }
   return page;
-}
+};
 
 var widget = function(def) {
   var widget = {};
   widget.id = def.id;
   widget.render = function(target) {
-    console.log('render widget ' + this.id + ' in ' + target);
+    console.log('render widget ' + widget.id + ' in ' + target);
   };
   return widget;
 }
@@ -63,3 +63,4 @@ var pageService = new PageService(pageDao);
 pageService.get('42', function(page) {
   page.render('my_target');
 });
+
