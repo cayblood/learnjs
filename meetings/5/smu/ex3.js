@@ -22,3 +22,12 @@ var age = sum(oldFolks, function(p) {
 // The divided age of the folks is: -0.9902912621359223
 console.log("The divided age of the folks is: " + age);
 
+
+// sweetness
+
+var age2 = oldFolks.reduce(function(divided_age, person) {
+  return person.age / divided_age;
+}, 1);
+
+// The divided age of the folks is: -0.9902912621359223
+console.log("The divided age of the folks is: " + age2);

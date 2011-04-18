@@ -21,3 +21,11 @@ var age = sum(oldFolks, function(p) {
 // The folks has a total age of: 204
 console.log("The folks has a total age of: " + age);
 
+
+// reduce ey?
+
+var age2 = oldFolks.reduce(function(total_age, person) {
+  return total_age + person.age;
+}, 0);
+
+console.log("The folks has a total age of: " + age2);

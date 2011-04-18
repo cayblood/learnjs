@@ -12,3 +12,10 @@ var iter = function(arr, fn, idx) {
 iter(arr, function(elem) {
   console.log(elem);
 });
+
+
+// js 1.6 sweetness
+
+arr.forEach(function(obj) {
+  console.log(obj);
+});
