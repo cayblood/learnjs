@@ -1,0 +1,30 @@
+<script>
+var oldFolks = [
+   {name: 'Anders Froyloff', age: 102},
+   {name: 'Helge LangBalle', age: 103},
+   {name: 'Tore Jon Den Yngre', age: -1}
+];
+
+var addFolkAge = function(oldFolkA, oldFolkB){
+  return {name:'total',age:oldFolkA.age + oldFolkB.age};
+}
+
+var total = oldFolks.reduce(addFolkAge,{name: 'total', age: 0});
+
+console.log(total.age);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
