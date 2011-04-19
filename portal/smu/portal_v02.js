@@ -1,9 +1,9 @@
 
-var each = function(list, fn) {
-  for (var i = 0; i < list.length; i++) {
-    fn(list[i]);
+[].forEach || (Array.prototype.forEach = function(fn) {
+  for (var i = 0; i < this.length; i++) {
+    fn(this[i]);
   }
-};
+});
 
 var page = function(def) {
   var page = {};
@@ -11,7 +11,7 @@ var page = function(def) {
   page.widgets = [];
   page.render = function(target) {
     console.log('render page ' + this.id + ' in ' + target);
-    each(this.widgets, function(widget) {
+    this.widgets.forEach(function(widget) {
       widget.render('page_' + def.id);
     });
   }
@@ -48,7 +48,7 @@ var PageService = function(dao) {
     get: function(id, cb) {
       dao.get(id, function(json) {
         var p = page(json);
-        each(json.widgets, function(w) {
+        json.widgets.forEach(function(w) {
           p.widgets.push(widget(w));
         });
         cb(p);
