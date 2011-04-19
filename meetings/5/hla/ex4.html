@@ -1,0 +1,25 @@
+<script>
+
+Array.matrix = function(m,n,initFunc){
+	var a;
+	var x,y;
+	var matrix=[];
+	for (x=0;x<m;x++){
+		a=[];
+		for (y=0;y<n;y++){
+			a[y]=initFunc();
+		}
+		matrix[x]=a;
+	}
+	return matrix;
+}
+
+var initial = 0;
+var myMatrix = Array.matrix(4,4, function(){
+	return (initial++)%2;
+});
+
+console.log(myMatrix);
+
+
+</script>
