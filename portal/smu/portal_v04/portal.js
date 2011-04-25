@@ -18,7 +18,7 @@
   };
 }(this));
 
-portal.require('portal.model.page')
+portal.require('portal.model.page');
 portal.require('portal.model.widget');
 portal.require('portal.dao.PageDao');
 portal.require('portal.service.PageService');
