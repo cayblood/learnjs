@@ -1,13 +1,9 @@
 "use strict";
 
 function validatePart(input, regex) {
-  var parts = input.split('.');
-  for (var i = 0; i < parts.length; i++) {    
-    if (!regex.test(parts[i])) {
-      return false;
-    }
-  }
-  return true;  
+  return input.split('.').every(function(part) {
+      return regex.test(part);
+  });
 }
 
 function validLocalPart(input) {
