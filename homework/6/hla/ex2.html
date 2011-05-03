@@ -1,0 +1,35 @@
+<script>
+
+var legal = "test@cisco.com";
+var legal2 = "testur+garbage@testur.is"
+
+var noDot = "test@ciscocom";
+var noAlpha = "testcisco.com";
+var nothingAfterDot = "test@cisco.";
+
+
+// Note that + is allowed according to RFC2821 and RFC2822 , ref also http://www.remote.org/jochen/mail/info/chars.html
+var validate = function(email) {    
+	var alphaNumericPeriodsUnderscoreOrHypens = "^[a-zA-Z0-9._-]+";     
+	var alphanumericPeriodOrHypens = "[a-zA-Z0-9.-]+";  // TODO: plus sign (+) should be allowed
+	var twoToFourAlphabets = "[a-zA-Z]{2,4}$"; 
+	var period = "\\.";
+
+
+	var pattern = new RegExp(alphaNumericPeriodsUnderscoreOrHypens 
+					+ "@" 
+					+ alphanumericPeriodOrHypens 
+					+ period 
+					+ twoToFourAlphabets);
+ 	
+	return pattern.test(email);
+	}
+	
+console.log(legal + " valid email " + validate(legal));
+console.log(legal2 + " valid email " + validate(legal2));
+
+console.log(noDot  + " valid email (no dot) " + validate(noDot ));
+console.log(noAlpha + " valid email (no alpha) " + validate(noAlpha));
+console.log(noAlpha + " valid email (nothingAfterDot) " + validate(nothingAfterDot));
+
+</script>
