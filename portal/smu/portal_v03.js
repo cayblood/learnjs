@@ -1,5 +1,5 @@
-(function(glbl) {
-  var g = global || glbl;
+(function() {
+  var g = global;
   g.portal = {
     declare: function(pckg, fn) {
       var crnt = g;
@@ -8,7 +8,7 @@
       });
     }
   };
-}(this));
+}());
 
 portal.declare('portal.model.page', function(def) {
   var page = {};
