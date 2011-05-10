@@ -1,24 +1,29 @@
 (function() {
-    var d = global;
-    d.portal = {}
-    d.portal.declare = function(packet, fn) {
-            names = packet.split('\.');
-            names.forEach(function(part, idx, arr) {
+    global.portal = {};
+    global.portal.declare = function(packet, fn) {
+      var names = packet.split('.');
+      var d = global;
+      names.forEach(function(part, idx, arr) {
+        if (arr.length - 1 === idx ) {
+          d[part] = fn || {};
+        } else {
+          d[part] = d[part] || {};
+        }
+        d = d[part];
+      });
+    };
+})();
 
-            });
-};
-
-
-var base = function(inId) {
+portal.declare('portal.base', function(inId) {
     var obj = {id: inId};
     obj.getId = function() {
         return obj.id
     };
     return obj;
-};
+});
 
 var widget = function(id) {
-    var obj = base(id);
+    var obj = portal.base(id);
     obj.render = function(target) {
         console.log('renderd widget ' + obj.getId() + " on target " + target);
     };
@@ -26,7 +31,7 @@ var widget = function(id) {
 };
 
 var pages = function(id) {
-    var obj = base(id);
+    var obj = portal.base(id);
     obj.widgets = [];
     obj.render = function(target) {
         for(var i=0; i < obj.widgets.length; i++) {
@@ -36,8 +41,9 @@ var pages = function(id) {
     return obj;
 };
 
-var Dao = function() {
-    var json = base("json");
+portal.declare('portal.dao');
+portal.dao.Dao = function() {
+    var json = portal.base("json");
     json.widgets = [widget('jw1'), widget('jw2')];
 
     return {
@@ -59,7 +65,7 @@ var PageService = function(dao) {
     };
 };
 
-var ps = new PageService(new Dao);
+var ps = new PageService(new portal.dao.Dao);
 ps.get('w1', function(page) {
     page.render("Mother");
 });
